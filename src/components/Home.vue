@@ -3,9 +3,7 @@
 
     <!-- Contenido -->
     <v-row justify="center" align="center">
-      <p>
-        HOME
-      </p>
+      <v-col cols="12">HOME</v-col>
     </v-row>
 
 
