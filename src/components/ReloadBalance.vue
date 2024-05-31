@@ -119,7 +119,7 @@ export default {
       try {
         console.log("formData", formData);
         const { data } = await axios.post(
-          "http://recargas_deportivas.test/recargas",
+          `${import.meta.env.VITE_API_URL}/recargas`,
           formData
         );
         const { message } = data;
@@ -146,18 +146,18 @@ export default {
     },
     async getBanks() {
       try {
-        const { data } = await axios.get("http://recargas_deportivas.test/bancos");
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/bancos`);
         this.bankOptions = data.data.map((bank) => ({
           value: bank.id,
           title: bank.descripcion,
         }));
       } catch (error) {
-        console.error("Error al obtener los bancos:", error);
+        console.error("Error:", error);
       }
     },
     async getComunicationChanel() {
       try {
-        const response = await axios.get("http://recargas_deportivas.test/canales");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/canales`);
         this.communicationChannelOptions = response.data.data.map((chanel) => ({
           value: chanel.id,
           title: chanel.nombre,

@@ -189,8 +189,7 @@ export default {
         this.recargaSeleccionada.usuario_id = 1; // Aquí se debe obtener el ID del usuario que está realizando la edición
 
         const { data } = await axios.put(
-          "http://recargas_deportivas.test/recargas/" +
-            this.recargaSeleccionada.recarga_id,
+          `${import.meta.env.VITE_API_URL}/recargas/${this.recargaSeleccionada.recarga_id}`,
           this.recargaSeleccionada
         );
 
@@ -214,7 +213,7 @@ export default {
     async getRecargasByPlayerID() {
       try {
         const { data } = await axios.get(
-          "http://recargas_deportivas.test/recargas/player/" + this.searchQuery
+          `${import.meta.env.VITE_API_URL}/recargas/player/${this.searchQuery}`,
         );
         this.recargas = data.data;
       } catch (error) {
@@ -224,7 +223,7 @@ export default {
     async getClienteByPlayerID() {
       try {
         const { data } = await axios.get(
-          "http://recargas_deportivas.test/cliente/player/" + this.searchQuery
+          `${import.meta.env.VITE_API_URL}/cliente/player/${this.searchQuery}`,
         );
         this.cliente = data.data;
       } catch (error) {
@@ -233,7 +232,7 @@ export default {
     },
     async getBanks() {
       try {
-        const { data } = await axios.get("http://recargas_deportivas.test/bancos");
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/bancos`);
         this.bankOptions = data.data.map((bank) => ({
           value: bank.id,
           title: bank.descripcion,
@@ -244,7 +243,7 @@ export default {
     },
     async getComunicationChanel() {
       try {
-        const response = await axios.get("http://recargas_deportivas.test/canales");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/canales`);
         this.communicationChannelOptions = response.data.data.map((chanel) => ({
           value: chanel.id,
           title: chanel.nombre,
